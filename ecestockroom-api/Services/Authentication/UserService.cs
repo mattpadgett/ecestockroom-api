@@ -25,6 +25,9 @@ namespace ecestockroom_api.Services.Authentication
         public async Task<User> Get(string id) =>
             await _users.Find<User>(user => user.Id == id).FirstOrDefaultAsync();
 
+        public async Task<User> GetByTechId(string techId) =>
+            await _users.Find<User>(user => user.TechId == techId).FirstOrDefaultAsync();
+
         public async Task<User> GetByUsername(string username) =>
             await _users.Find<User>(user => user.Username.ToLower() == username.ToLower()).FirstOrDefaultAsync();
 
@@ -35,7 +38,16 @@ namespace ecestockroom_api.Services.Authentication
             return user;
         }
 
+        public async Task<User> Create(User create)
+        {
+            await _users.InsertOneAsync(create);
+            return create;
+        }
+
         public async void Update(User original, UserUpdate userIn) =>
             await _users.ReplaceOneAsync(user => user.Id == original.Id, User.FromUpdate(original, userIn));
+
+        public async void Update(string userId, User update) =>
+            await _users.ReplaceOneAsync(user => user.Id == userId, update);
     }
 }

@@ -1,7 +1,9 @@
 using ecestockroom_api.Models;
 using ecestockroom_api.Models.Authentication;
+using ecestockroom_api.Services;
 using ecestockroom_api.Services.Authentication;
 using ecestockroom_api.Services.Logging;
+using ecestockroom_api.Services.ProPoints;
 using ecestockroom_api.Services.Tools;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,7 +45,7 @@ namespace ecestockroom_api
             {
                 options.AddPolicy("CorsPolicy", builder =>
                 {
-                    builder.WithOrigins("http://localhost:3000")
+                    builder.WithOrigins("http://localhost:3000", "*", "http://ecestockroom.mpadgett.net")
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });
@@ -63,6 +65,8 @@ namespace ecestockroom_api
             services.AddSingleton<RoleService>();
             services.AddSingleton<TokenService>();
             services.AddSingleton<ToolService>();
+            services.AddSingleton<AnnouncementService>();
+            services.AddSingleton<PPEventService>();
 
             services.AddControllers();
         }

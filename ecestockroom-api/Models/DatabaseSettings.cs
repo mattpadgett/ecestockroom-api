@@ -13,6 +13,8 @@ namespace ecestockroom_api.Models
         public string RolesCollectionName { get; set; }
         public string TokensCollectionName { get; set; }
         public string ToolGroupsCollectionName { get; set; }
+        public string AnnouncementsCollectionName { get; set; }
+        public string ProPointsEventsCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
@@ -25,6 +27,8 @@ namespace ecestockroom_api.Models
         string RolesCollectionName { get; set; }
         string TokensCollectionName { get; set; }
         string ToolGroupsCollectionName { get; set; }
+        string AnnouncementsCollectionName { get; set; }
+        string ProPointsEventsCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }

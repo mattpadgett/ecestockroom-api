@@ -22,7 +22,7 @@ namespace ecestockroom_api.Services.Tools
 
         public async Task<List<ToolGroup>> Get() =>
             await _toolGroups.Find(toolGroups => true).ToListAsync();
-
+        
         public async Task<ToolGroup> Get(string id) =>
             await _toolGroups.Find<ToolGroup>(toolGroup => toolGroup.Id == id).FirstOrDefaultAsync();
 
